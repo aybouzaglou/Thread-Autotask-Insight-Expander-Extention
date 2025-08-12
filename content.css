@@ -39,7 +39,7 @@
   margin: 6px 0 10px;
 }
 
-/* Subtle ghost-style pill button to blend with Autotask UI */
+/* Subtle ghost-style button that inherits page font and uses squared corners */
 .thread-expander-button {
   display: inline-flex;
   align-items: center;
@@ -47,10 +47,11 @@
   background: #f5f7fb;
   color: #0b5cff !important;
   border: 1px solid #e5e7eb;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1;
+  border-radius: 6px; /* more square to match UI */
+  font-family: inherit; /* use same font as page (e.g., Inter/System UI) */
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
   padding: 6px 10px;
   cursor: pointer;
   box-shadow: none;
