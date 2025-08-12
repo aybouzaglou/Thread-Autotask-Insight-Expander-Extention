@@ -38,3 +38,4 @@ The mini insight is useful, but it’s cramped. This keeps the exact same experi
 
 ## Credit
 All credit for the messenger goes to Thread (getthread.com). This is just a front‑end convenience layer to make it easier to use inside Autotask.
+GPT 5 for Helping me with the code
