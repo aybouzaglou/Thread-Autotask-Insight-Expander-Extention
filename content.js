@@ -45,6 +45,18 @@ function hideOverlay() {
   if (frame) frame.removeAttribute('src');
 }
 
+let threadExpanderHotkeyBound = false;
+function bindThreadHotkey(insightIframe) {
+  if (threadExpanderHotkeyBound) return;
+  threadExpanderHotkeyBound = true;
+  document.addEventListener('keydown', (e) => {
+    if (e.shiftKey && e.key.toLowerCase() === 'e') {
+      const src = insightIframe.getAttribute('src');
+      if (src) showOverlay(src, insightIframe.getAttribute('sandbox'));
+    }
+  }, { passive: true });
+}
+
 function addExpandUI(insightIframe) {
   if (!insightIframe || insightIframe.dataset.threadExpanderBound === '1') return;
 
@@ -158,18 +170,27 @@ function addExpandUI(insightIframe) {
   });
 
   // Optional shortcut: Shift+E opens the overlay for this iframe
-  document.addEventListener('keydown', (e) => {
-    if (e.shiftKey && e.key.toLowerCase() === 'e') {
-      const src = insightIframe.getAttribute('src');
-      if (src) showOverlay(src, insightIframe.getAttribute('sandbox'));
-    }
-  }, { passive: true });
+  bindThreadHotkey(insightIframe);
 
   insightIframe.dataset.threadExpanderBound = '1';
 }
 
+function isThreadChatIframe(el) {
+  try {
+    // Resolve relative src values against page URL
+    const u = new URL(el.getAttribute('src') || '', location.href);
+    return (
+      u.protocol === 'https:' &&
+      u.hostname === 'inbox.getthread.com' &&
+      u.pathname.startsWith('/autotask/chat')
+    );
+  } catch {
+    return false;
+  }
+}
+
 function scanAndBind() {
-  const iframes = document.querySelectorAll('iframe[src*="inbox.getthread.com/autotask/chat"]');
+  const iframes = Array.from(document.querySelectorAll('iframe[src]')).filter(isThreadChatIframe);
   iframes.forEach(addExpandUI);
 }
 
@@ -179,6 +200,9 @@ scanAndBind();
 // Re-scan when page updates (SPA/partial reloads)
 const observer = new MutationObserver(scanAndBind);
 observer.observe(document.documentElement, { childList: true, subtree: true });
+
+// Tidy up on navigation/unload
+window.addEventListener('beforeunload', () => observer.disconnect());
 
 // Debug log (optional)
 console.log('[Thread Expander] Ready. Looking for Thread insight iframes…');
