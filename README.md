@@ -2,6 +2,10 @@
 
 A tiny Chrome extension that adds a clean "Expand Thread" button next to the Thread messenger insight on Autotask ticket pages. Clicking it opens the same signed Thread view in a larger overlay so you can actually read and respond without squinting.
 
+## Demo
+![Demo](https://github.com/user-attachments/assets/116ae1c3-7cc3-4494-ac1f-e42956532bbe)
+
+
 I am not affiliated with Thread (getthread.com) or Autotask. I built this to make working tickets a little less annoying.
 
 ## What it does
