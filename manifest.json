@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Autotask Thread Insight Expander",
+  "version": "0.1.0",
+  "description": "Expand the Thread messenger insight into a larger overlay on Autotask ticket pages.",
+  "content_scripts": [
+    {
+      "matches": ["https://*.autotask.net/*"],
+      "all_frames": true,
+      "run_at": "document_idle",
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ]
+}

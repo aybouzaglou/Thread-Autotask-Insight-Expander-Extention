@@ -1,0 +1,62 @@
+/* Full-page overlay */
+#thread-expander-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 2147483647; /* on top of everything */
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+#thread-expander-overlay.active { display: flex; }
+
+/* Overlay window */
+#thread-expander-container {
+  position: relative;
+  width: min(1200px, 92vw);
+  height: min(900px, 88vh);
+  background: #111;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  overflow: hidden;
+}
+
+/* The enlarged Thread iframe */
+#thread-expander-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #fff;
+}
+
+
+/* Right-aligned row to hold the action button */
+.thread-expander-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 6px 0 10px;
+}
+
+/* Subtle ghost-style pill button to blend with Autotask UI */
+.thread-expander-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f7fb;
+  color: #0b5cff !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 6px 10px;
+  cursor: pointer;
+  box-shadow: none;
+}
+.thread-expander-button:hover {
+  background: #eaf2ff;
+  border-color: #d6e4ff;
+}
+.thread-expander-button .icon { width: 14px; height: 14px; display: inline-block; }
