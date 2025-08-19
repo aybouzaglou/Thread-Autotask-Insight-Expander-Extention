@@ -2,6 +2,8 @@
 
 A tiny Chrome extension that adds a clean "Expand Thread" button next to the Thread messenger insight on Autotask ticket pages. Clicking it opens the same signed Thread view in a larger overlay so you can actually read and respond without squinting.
 
+**Version 0.2.0** - Security hardening and performance improvements
+
 ## Demo
 ![Demo](https://github.com/user-attachments/assets/116ae1c3-7cc3-4494-ac1f-e42956532bbe)
 
@@ -29,12 +31,29 @@ The mini insight is useful, but it’s cramped. This keeps the exact same experi
 ## Notes
 - The overlay size is controlled in `content.css` (`#thread-expander-container`). Tweak to taste.
 - The content script runs in all frames on `autotask.net` so it can find the insight even if Autotask nests it.
-- No data is collected. There’s no background script.
+- No data is collected. There's no background script.
+- All iframe URLs are validated to only load from `inbox.getthread.com`.
+- Console logging is minimal to avoid spam.
 
 ## Files
 - `manifest.json` – MV3 config
 - `content.js` – Finds the insight iframe, adds the button, opens the overlay
 - `content.css` – Styles for the overlay and the button
+- `SECURITY.md` – Security documentation and threat model
+- `WARP.md` – Development guidelines for AI assistants
+
+## Changelog
+
+### v0.2.0
+- Added URL validation to only load Thread domains
+- Fixed excessive console logging that was firing every second
+- Added debouncing to MutationObserver (500ms delay)
+- Improved security with proper sandbox attribute management
+- Added security documentation
+- Optimized performance by only scanning when iframes are detected
+
+### v0.1.0
+- Initial release
 
 ## Credit
 All credit for the messenger goes to Thread (getthread.com). This is just a front‑end convenience layer to make it easier to use inside Autotask.

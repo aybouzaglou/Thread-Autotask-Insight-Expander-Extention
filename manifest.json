@@ -1,18 +1,53 @@
 {
   "manifest_version": 3,
   "name": "Autotask Thread Insight Expander",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Expand the Thread messenger insight into a larger overlay on Autotask ticket pages.",
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Thread Insight Expander"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icon.svg"
+      ],
+      "matches": [
+        "https://*.autotask.net/*"
+      ]
+    }
+  ],
   "content_scripts": [
     {
-      "matches": ["https://*.autotask.net/*"],
+      "matches": [
+        "https://*.autotask.net/*"
+      ],
       "all_frames": true,
       "run_at": "document_idle",
-      "js": ["content.js"],
-      "css": ["content.css"]
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ]
     }
   ],
   "content_security_policy": {
     "extension_pages": "default-src 'self'; script-src 'self'; object-src 'none'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none';"
-  }
+  },
+  "host_permissions": [
+    "https://*.autotask.net/*"
+  ],
+  "permissions": []
 }
