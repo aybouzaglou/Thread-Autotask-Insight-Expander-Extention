@@ -21,12 +21,28 @@ I am not affiliated with Thread (getthread.com) or Autotask. I built this to mak
 ## Why
 The mini insight is useful, but it’s cramped. This keeps the exact same experience and simply gives it room to breathe. No hacks, no scraping, no rerouting—just reusing the iframe URL you already have access to.
 
-## Install (Chrome)
-1) Download or clone this folder.
-2) Go to chrome://extensions and switch on Developer mode.
-3) Click "Load unpacked" and select this folder.
-4) Visit a ticket page like `https://*.autotask.net/Mvc/ServiceDesk/TicketDetail.mvc?...`.
-5) When the Thread insight appears, use the "Expand Thread" button under it (or press Shift+E).
+## Install (Chromium based browsers)
+Quick Start: Install the Extension
+
+### Option 1: Load Unpacked (Preferred for Development)
+
+Download or clone this repo.
+
+Go to chrome://extensions or edge://extensions and enable Developer mode (top right).
+
+Click Load unpacked and select the extension root folder.
+
+Open a ticket page like https://*.autotask.net/Mvc/ServiceDesk/TicketDetail.mvc?....
+
+When the Thread insight appears, use the "Expand Thread" button under it—or press Shift+E.
+
+### Option 2: Load from ZIP
+
+Download the latest release ZIP from [Releases.](https://github.com/aybouzaglou/Thread-Autotask-Insight-Expander-Extention/releases)
+
+Unzip to a convenient location.
+
+Go to chrome://extensions → Developer mode → Load unpacked → Select the unzipped folder
 
 ## Notes
 - The overlay size is controlled in `content.css` (`#thread-expander-container`). Tweak to taste.
